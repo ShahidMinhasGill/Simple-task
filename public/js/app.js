@@ -1881,24 +1881,123 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      form: {
-        email: null,
-        name: null,
-        phone: null,
-        address: null,
-        password: null
+      compnaydata: {
+        company_name: null,
+        company_email: null,
+        company_phone: null,
+        company_city: null,
+        rows: [{
+          name: 'Shahid',
+          email: 'shahid@gmail.com',
+          phone: '033040034'
+        }]
       }
     };
   },
   methods: {
-    addRecord: function addRecord() {
-      axios.post('/api/addrecored', this.form).then(function (res) {
-        return console.log(res.data);
-      })["catch"](function (err) {
-        return console.log(err.response.data);
+    addRow: function addRow() {
+      this.compnaydata.rows.push({
+        name: "",
+        email: "",
+        phone: ""
+      });
+    },
+    submit: function submit() {
+      axios.post('/api/addrecored', this.compnaydata).then(function (response) {
+        console.log(response);
+      });
+    },
+    removeRow: function removeRow(index) {
+      // console.log(row);
+      // console.log(index);
+      this.compnaydata.rows.splice(index, 1); // this.compnaydata.rows.$remove(row);
+    },
+    submitRows: function submitRows() {
+      // add the action
+      axios.post('/api/addrecored', this.rows).then(function (response) {
+        console.log(response);
       });
     }
   }
@@ -37719,74 +37818,262 @@ var render = function() {
     "v-container",
     [
       _c(
-        "v-form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.addRecord($event)
-            }
-          }
-        },
+        "v-app",
         [
-          _c("v-text-field", {
-            attrs: { label: "First Name" },
-            model: {
-              value: _vm.form.name,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "name", $$v)
-              },
-              expression: "form.name"
-            }
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: { label: "E-mail" },
-            model: {
-              value: _vm.form.email,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "email", $$v)
-              },
-              expression: "form.email"
-            }
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: { label: "Address" },
-            model: {
-              value: _vm.form.address,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "address", $$v)
-              },
-              expression: "form.address"
-            }
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: { label: "Mobile No" },
-            model: {
-              value: _vm.form.phone,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "phone", $$v)
-              },
-              expression: "form.phone"
-            }
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: { label: "Password" },
-            model: {
-              value: _vm.form.password,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "password", $$v)
-              },
-              expression: "form.password"
-            }
-          }),
-          _vm._v(" "),
-          _c("v-btn", { attrs: { color: "green", type: "submit" } }, [
-            _vm._v("Submit\n        ")
-          ])
+          _c(
+            "v-form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              }
+            },
+            [
+              _c("v-text-field", {
+                attrs: { label: "Company Name" },
+                model: {
+                  value: _vm.compnaydata.company_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.compnaydata, "company_name", $$v)
+                  },
+                  expression: "compnaydata.company_name"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { label: " Company Email" },
+                model: {
+                  value: _vm.compnaydata.company_email,
+                  callback: function($$v) {
+                    _vm.$set(_vm.compnaydata, "company_email", $$v)
+                  },
+                  expression: "compnaydata.company_email"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { label: "Company phone" },
+                model: {
+                  value: _vm.compnaydata.company_phone,
+                  callback: function($$v) {
+                    _vm.$set(_vm.compnaydata, "company_phone", $$v)
+                  },
+                  expression: "compnaydata.company_phone"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { label: "Company City" },
+                model: {
+                  value: _vm.compnaydata.company_city,
+                  callback: function($$v) {
+                    _vm.$set(_vm.compnaydata, "company_city", $$v)
+                  },
+                  expression: "compnaydata.company_city"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-card",
+                { staticClass: "mx-auto", attrs: { "max-width": "800" } },
+                [
+                  _c(
+                    "v-toolbar",
+                    { attrs: { color: "teal", dark: "" } },
+                    [
+                      _c("v-toolbar-title", [_vm._v("Add Row")]),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { icon: "", small: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.addRow()
+                            }
+                          }
+                        },
+                        [
+                          _c("v-icon", { attrs: { color: "orange" } }, [
+                            _vm._v("add")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list",
+                    _vm._l(_vm.compnaydata.rows, function(row, index) {
+                      return _c(
+                        "div",
+                        [
+                          _c(
+                            "v-list-item",
+                            [
+                              _c("v-list-item-action"),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c("table", { staticClass: "table" }, [
+                                    _c("thead", [
+                                      _c("tr", [
+                                        _c("td", [
+                                          _c("strong", [_vm._v("Name")])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _c("strong", [_vm._v("Email")])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _c("strong", [_vm._v("Phone No")])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td")
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tbody", [
+                                      _c("tr", [
+                                        _c("td", [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: row.name,
+                                                expression: "row.name"
+                                              }
+                                            ],
+                                            attrs: { type: "text" },
+                                            domProps: { value: row.name },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  row,
+                                                  "name",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: row.email,
+                                                expression: "row.email"
+                                              }
+                                            ],
+                                            attrs: { type: "text" },
+                                            domProps: { value: row.email },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  row,
+                                                  "email",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: row.phone,
+                                                expression: "row.phone"
+                                              }
+                                            ],
+                                            attrs: { type: "text" },
+                                            domProps: { value: row.phone },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  row,
+                                                  "phone",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ])
+                                      ])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-list-item-subtitle")
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { icon: "", small: "" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.removeRow(index)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("v-icon", { attrs: { color: "red" } }, [
+                                    _vm._v("remove")
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    }),
+                    0
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.submit()
+                    }
+                  }
+                },
+                [_vm._v("\n                Create\n            ")]
+              )
+            ],
+            1
+          )
         ],
         1
       )

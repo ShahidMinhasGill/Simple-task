@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\RecordController;
+
+use App\Models\Company;
 
 use Illuminate\Http\Request;
 
@@ -11,18 +14,23 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function company(Request $request)
     {
-        return view('home');
+
+
+        $input = $request->all();
+        dd($input);
+        $lastId = Company::insertGetId($input);
+        $recordControler = new RecordController();
+// Use other controller's method in this controller's method
+       $id =  $recordControler->employee($lastId);
+       dd($id);
+
     }
 }
